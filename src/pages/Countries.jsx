@@ -57,10 +57,12 @@ const CountriesMain = () => {
               className="flex gap-3 shadow-lg rounded-md py-3 px-5 text-sm border sm:text-[18px] transition-all 
             dark:bg-darkblue dark:border-verydarkblue"
             >
-              <IconSearch
-                size={20}
-                className="text-darkgray dark:text-white transition-all"
-              />
+              <button type="submit">
+                <IconSearch
+                  size={20}
+                  className="text-darkgray dark:text-white transition-all"
+                />
+              </button>
               <input
                 name="countryName"
                 type="text"
