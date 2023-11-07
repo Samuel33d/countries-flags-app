@@ -21,9 +21,9 @@ const Pagination = ({ countries }) => {
       ) : (
         <section>
           <ul
-            className={`  px-5 transition-all  ${
+            className={`  px-5 sm:px-0 transition-all  ${
               itemsInCurrentPage.length > 2
-                ? "grid sm:grid-cols-[repeat(auto-fit,minmax(301px,1fr))] place-items-center gap-10 sm:gap-5 "
+                ? "grid sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] place-items-center gap-10 sm:gap-5 "
                 : "flex justify-center  gap-5"
             } `}
           >

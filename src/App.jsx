@@ -6,7 +6,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   return (
     <main className={`${isDarkMode && "dark"} `}>
       <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />

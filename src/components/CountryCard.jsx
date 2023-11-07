@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const CountryCard = ({ country }) => {
   return (
-    <article className="rounded-md overflow-hidden shadow-lg border-2  sm:hover:scale-105 transition-all dark:bg-darkblue dark:border-verydarkblue h-[381px] w-[300px] hover:-translate-y-2">
+    <article className="rounded-md overflow-hidden shadow-lg border-2  sm:hover:scale-105 transition-all dark:bg-darkblue dark:border-verydarkblue h-[381px] w-[290px] hover:-translate-y-2">
       <header className="rounded-t-md overflow-hidden relative">
         <Link to={`/country/${country.cca2}`}>
           <img

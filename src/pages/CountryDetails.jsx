@@ -10,7 +10,6 @@ const CountryDetails = () => {
   const languages = [];
   const currencies = [];
 
-
   for (const key in countryToDetail?.languages) {
     languages.push(countryToDetail?.languages[key]);
   }
@@ -36,9 +35,9 @@ const CountryDetails = () => {
       </Link>
 
       <section className=" sm:p-2 grid gap-5 my-44 md:grid-cols-2 max-w-[1024px] sm:gap-10 ">
-        <header className="h-full w-full ">
+        <header className="h-full w-full">
           <img
-            className="w-full rounded-2xl overflow-hidden max-w-[480px] border-2 dark:border-darkblue"
+            className="w-full rounded-2xl overflow-hidden max-w-[480px] border-2 dark:border-darkblue "
             src={countryToDetail?.flags.svg}
             alt=""
           />
