@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const CountryCard = ({ country }) => {
   return (
-    <article className="rounded-md overflow-hidden shadow-md border w-[307px] sm:hover:scale-105 transition-all dark:bg-darkblue dark:border-verydarkblue h-[381px]">
+    <article className="rounded-md overflow-hidden shadow-lg border-2  sm:hover:scale-105 transition-all dark:bg-darkblue dark:border-verydarkblue h-[381px] w-[300px] hover:-translate-y-2">
       <header className="rounded-t-md overflow-hidden relative">
         <Link to={`/country/${country.cca2}`}>
           <img
@@ -18,9 +18,11 @@ const CountryCard = ({ country }) => {
       </header>
       <main className="p-6 grid gap-4 ">
         <Link to={`/country/${country.cca2}`} className="">
-          <h3 className="font-bold ">{country.name.common}</h3>
+          <h3 className="font-bold hover:underline dark:text-white transition-all text-black ">
+            {country.name.common}
+          </h3>
         </Link>
-        <ul className="grid font-semibold text-sm pb-5 gap-1 ">
+        <ul className="grid font-bold text-sm pb-5 gap-1 ">
           <li className="text-verydarkbluelight dark:text-white ">
             Population:{" "}
             <span className="font-normal">{country.population}</span>

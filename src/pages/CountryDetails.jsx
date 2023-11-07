@@ -7,6 +7,17 @@ const CountryDetails = () => {
   const [country, setCountry] = useState([]);
   const { id } = useParams();
   const countryToDetail = country[0];
+  const languages = [];
+  const currencies = [];
+
+
+  for (const key in countryToDetail?.languages) {
+    languages.push(countryToDetail?.languages[key]);
+  }
+
+  for (const key in countryToDetail?.currencies) {
+    currencies.push(countryToDetail?.currencies[key].name);
+  }
 
   useEffect(() => {
     axios
@@ -16,7 +27,7 @@ const CountryDetails = () => {
   }, [id]);
 
   return (
-    <main className="min-h-screen  font-nunito bg-verylighgray dark:bg-verydarkblue  dark:text-white  relative grid place-items-center">
+    <main className="p-5 min-h-screen  font-nunito bg-verylighgray dark:bg-verydarkblue  dark:text-white  relative grid place-items-center">
       <Link
         className="absolute top-32 left-3 sm:left-10 flex py-1 px-5 gap-2 dark:bg-darkblue w-fit text-sm items-center shadow-md border dark:border-verydarkblue"
         to={"/"}
@@ -24,22 +35,22 @@ const CountryDetails = () => {
         <IconArrowNarrowLeft /> <span>Back</span>
       </Link>
 
-      <section className="p-3 grid gap-5 my-44 md:grid-cols-2 max-w-[1024px] sm:gap-10">
+      <section className=" sm:p-2 grid gap-5 my-44 md:grid-cols-2 max-w-[1024px] sm:gap-10 ">
         <header className="h-full w-full ">
           <img
-            className="h-full w-full"
+            className="w-full rounded-2xl overflow-hidden max-w-[480px] border-2 dark:border-darkblue"
             src={countryToDetail?.flags.svg}
             alt=""
           />
         </header>
         <main className="grid gap-8">
           <div className="grid gap-5">
-            <h2 className="font-bold text-lg w-full">
+            <h2 className="font-bold text-lg w-full md:text-2xl transition-all">
               {countryToDetail?.name.common}
             </h2>
 
-            <div className="grid sm:grid-cols-2 sm:gap-10 place-items-start">
-              <ul className="text-sm grid gap-3 font-semibold">
+            <div className="grid sm:grid-cols-2 sm:gap-10 gap-6 place-items-start">
+              <ul className="text-sm grid gap-2 font-bold">
                 <li>
                   Native Name:{" "}
                   <span className="dark:text-verylighgray font-normal">
@@ -56,13 +67,13 @@ const CountryDetails = () => {
                 </li>
                 <li>
                   Region:{" "}
-                  <span className="text-verylighgray font-normal">
+                  <span className=" dark:text-verylighgray font-normal">
                     {countryToDetail?.region}
                   </span>
                 </li>
                 <li>
                   Sub Region:{" "}
-                  <span className="text-verylighgray font-normal">
+                  <span className=" dark:text-verylighgray font-normal">
                     {countryToDetail?.subregion}
                   </span>
                 </li>
@@ -76,20 +87,27 @@ const CountryDetails = () => {
                 </li>
               </ul>
               <div>
-                <ul className="text-sm grid gap-3 font-semibold">
+                <ul className="text-sm grid gap-2 font-bold">
+                  {countryToDetail?.tld !== undefined && (
+                    <li className="">
+                      Top Level Domain:{" "}
+                      <span className="dark:text-verylighgray font-normal">
+                        {countryToDetail?.tld[0]}{" "}
+                      </span>
+                    </li>
+                  )}
+
                   <li className="">
-                    Top Level Domain:{" "}
+                    Currencies:{" "}
                     <span className="dark:text-verylighgray font-normal">
-                      {countryToDetail?.tld[0]}{" "}
+                      {currencies.map((currency) => currency).join(", ")}
                     </span>
                   </li>
                   <li className="">
-                    Currencies:
-                    <span className="dark:text-verylighgray font-normal"></span>
-                  </li>
-                  <li className="">
-                    Languages:
-                    <span className="dark:text-verylighgray font-normal"></span>
+                    Languages:{" "}
+                    <span className="dark:text-verylighgray font-normal">
+                      {languages.map((language) => language).join(", ")}
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -105,13 +123,13 @@ const CountryDetails = () => {
               </h4>
               <ul className="flex gap-2 flex-wrap">
                 {countryToDetail?.borders.map((border) => (
-                  <li
-                    className="flex items-center justify-center px-4 dark:bg-darkblue shadow-lg  border dark:border-verydarkblue hover:scale-110 transition-all h-fit w-fit"
+                  <Link
+                    to={`/country/${border}`}
                     key={border}
+                    className="w-fit h-fit dark:bg-darkblue py-1 px-3 rounded-md hover:scale-125 transition-all hover:-translate-y-2 hover:shadow-lg border-2 dark:border-darkblue"
                   >
-                    {" "}
                     {border}
-                  </li>
+                  </Link>
                 ))}
               </ul>
             </div>
