@@ -15,7 +15,7 @@ const Pagination = ({ countries }) => {
     setCurrentPage(1);
   }, [countries]);
   return (
-    <main className=" py-10 transition-all">
+    <main className=" py-10 sm:py-0 transition-all">
       {itemsInCurrentPage.length === 0 ? (
         <span className="text-lg px-5">No countries found...</span>
       ) : (
